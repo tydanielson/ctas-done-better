@@ -1,8 +1,11 @@
 {
-  "name": "bpf-cta",
-  "description": "A tool for creating CTAs",
+  "name": "cta-done-better",
+  "description": "",
   "main": "",
   "moduleType": [],
+  "authors": [
+    "Tyler Danielson"
+  ],
   "license": "MIT",
   "homepage": "",
   "private": true,
@@ -15,7 +18,10 @@
   ],
   "dependencies": {
     "angular-material": "^1.0.5",
+    "angular-ui-router": "*",
+    "angular-ui-tinymce": "^0.0.14",
+    "jquery": "^1.12.1",
     "angular": "angularjs#^1.5.0",
-    "jquery": "^1.12.1"
+    "tinymce": "^4.3.7"
   }
 }

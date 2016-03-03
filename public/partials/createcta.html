@@ -4,5 +4,15 @@
     <label>CTA Name</label>
     <input name="cta-name" ng-model="cta.name" required>
   </md-input-container>
+   <md-input-container>
+    <label>Link</label>
+    <input name="cta-link" ng-model="cta.link" required>
+  </md-input-container>
+  <div>
+   	<textarea ui-tinymce="tinymceOptions" ng-model="cta.html"></textarea>
+  </div>
+
+  <br/>
+  <md-button class="md-raised" ng-click="savecta()">Save</md-button>
 </form>
 </div>

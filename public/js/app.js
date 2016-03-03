@@ -5,7 +5,9 @@
     angular
         .module('app', [
             'ngMaterial',
-            'ui.router'
+            'ui.router',
+            'ui.tinymce',
+            'ui.grid'
         ])
         .config(function ($urlRouterProvider, $stateProvider) {
             $urlRouterProvider.otherwise('/list');
@@ -24,6 +26,14 @@
                     views: {
                         'list': {
                             templateUrl: 'partials/listcta.html',
+                        }
+                    }
+                })
+                .state('main.create', {
+                    url: '/list',
+                    views: {
+                        'list': {
+                            templateUrl: 'partials/createcta.html',
                         }
                     }
                 });

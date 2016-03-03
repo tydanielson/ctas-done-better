@@ -6,3 +6,12 @@ body {
 a {
   color: #00B7FF;
 }
+
+.grid {
+    width: 800px;
+    height: 250px;
+}
+
+.md-button.md-fab.md-mini {
+	background-color: #0066ff;
+}
