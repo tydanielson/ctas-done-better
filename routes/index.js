@@ -53,6 +53,7 @@ router.post('/adduser', function(req, res) {
 });
 
 router.get('/api/ctas', api.ctas);
+//router.get('/api/cta', api.cta);
 
 /*GET Partials */
 // router.get('/partials', function(req, res) {

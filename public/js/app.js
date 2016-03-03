@@ -35,6 +35,11 @@
                         'list': {
                             templateUrl: 'partials/createcta.html',
                         }
+                    },
+                    resolve: {
+                        ctaData: function ($http) {
+                            return $http({method: 'GET', url: ''});
+                        }
                     }
                 });
         });
