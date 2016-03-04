@@ -4,7 +4,7 @@
 
     angular
         .module('app')
-        .controller('MainController', function ($scope, $http, ctaData) {
+        .controller('MainController', function ($scope, $http) {
 
             //will probably want to resolve this data before hand.
             $scope.ctalist = [];
@@ -15,7 +15,7 @@
                 $scope.ctalist = res.data.ctalist;
             });
 
-            $scope.cta = ctaData;
+            //$scope.cta = ctaData;
 
             $scope.tinymceOptions = {
                 plugins : 'link image table code',

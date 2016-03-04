@@ -4,14 +4,15 @@
 'use strict';
 var mongoose = require('mongoose');
 
+
 var Schema = mongoose.Schema;
-var Cta = new Schema({
+var CtaSchema = new Schema({
     name    : String,
     link    : String,
     source  : String
 });
 
-mongoose.model('Cta', Cta);
+var Cta = mongoose.model('Cta', CtaSchema);
 
 exports.ctas = function (req, res) {
     Cta.find(function (err, ctas, count) {
@@ -22,23 +23,12 @@ exports.ctas = function (req, res) {
     });
 };
 
-
-// exports.ctas = function (req, res) {
-//     var db = req.db;
-//     var collection = db.get('ctas');
-//     collection.find({}, {}, function (e, docs) {
-//         res.json({
-//             "ctalist" : docs
-//         });
-//     });
-// };
-
-// exports.cta = function (req, res) {
-//     var db = req.db;
-//     var collection = db.get('ctas');
-//     collection.findById('56d6169e177f3b3e70d4f436', function (e, docs) {
-//         res.json({
-//             "cta" : docs
-//         });
-//     });
-// };
+exports.cta = function (req, res) {
+    var oid = mongoose.Types.ObjectId('56d6169e177f3b3e70d4f436');
+    Cta.findOne({'_id': oid}, function (err, cta, count) {
+        if (err) return console.error(err);
+        res.json({
+            "cta" : cta
+        });
+    });
+};
