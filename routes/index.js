@@ -52,8 +52,8 @@ router.post('/adduser', function(req, res) {
     });
 });
 
-router.get('/api/ctas', api.ctas);
-router.get('/api/cta', api.cta);
+router.get('/api/cta', api.allCtas);
+router.get('/api/cta/:id', api.cta);
 
 /*GET Partials */
 // router.get('/partials', function(req, res) {

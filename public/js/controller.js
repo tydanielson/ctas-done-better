@@ -10,7 +10,7 @@
             $scope.ctalist = [];
             $http({
                 method: 'GET',
-                url : 'api/ctas'
+                url : 'api/cta'
             }).then(function (res) {
                 $scope.ctalist = res.data.ctalist;
             });

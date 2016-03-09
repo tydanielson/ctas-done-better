@@ -14,7 +14,7 @@ var CtaSchema = new Schema({
 
 var Cta = mongoose.model('Cta', CtaSchema);
 
-exports.ctas = function (req, res) {
+exports.allCtas = function (req, res) {
     Cta.find(function (err, ctas, count) {
         if (err) return console.error(err);
         res.json({
@@ -24,11 +24,23 @@ exports.ctas = function (req, res) {
 };
 
 exports.cta = function (req, res) {
-    var oid = mongoose.Types.ObjectId('56d6169e177f3b3e70d4f436');
+    var oid = mongoose.Types.ObjectId(req.params.id);
     Cta.findOne({'_id': oid}, function (err, cta, count) {
         if (err) return console.error(err);
         res.json({
             "cta" : cta
         });
     });
+};
+
+exports.createcta = function (req, res) {
+
+};
+
+exports.updatecta = function (req, res) {
+
+};
+
+exports.deletecta = function (req, res) {
+
 };
