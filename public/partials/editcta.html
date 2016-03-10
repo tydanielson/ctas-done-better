@@ -1,5 +1,5 @@
 <div>
-<form name="cta-create">
+<form name="cta-edit">
   <md-input-container>
     <label>CTA Name</label>
     <input name="cta-name" ng-model="cta.name" required>
@@ -9,10 +9,11 @@
     <input name="cta-link" ng-model="cta.link" required>
   </md-input-container>
   <div>
-   	<textarea ui-tinymce="tinymceOptions" ng-model="cta.html"></textarea>
+   	<textarea ui-tinymce="tinymceOptions" ng-model="cta.source"></textarea>
   </div>
 
   <br/>
   <md-button class="md-raised" ng-click="savecta()">Save</md-button>
+  <md-button class="md-raised" ng-click="back()">Back</md-button>
 </form>
 </div>

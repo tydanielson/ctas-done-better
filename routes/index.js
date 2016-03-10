@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var api = require('./api');
+var cors = require('cors');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -53,7 +54,10 @@ router.post('/adduser', function(req, res) {
 });
 
 router.get('/api/cta', api.allCtas);
-router.get('/api/cta/:id', api.cta);
+router.get('/api/cta/:id', cors(), api.cta);
+router.post('/api/cta/save', api.createcta);
+router.put('/api/cta/save', api.updatecta);
+router.delete('/api/cta/:id', api.deletecta);
 
 /*GET Partials */
 // router.get('/partials', function(req, res) {

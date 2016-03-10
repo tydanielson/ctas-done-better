@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Application</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+<style type="text/css">
+	/* CTA CLASSES - DO NOT DELETE - jbuttler 12.15.2015 */
+
+.cta-table {
+	background: none;
+	text-align: center;
+}
+
+.cta-table{ 
+	margin:50px 0 50px 0; 
+	background:#5ba6d2;
+	padding-bottom: 30px;
+}
+.cta-table > td{padding:0 50px 0 50px;}
+a.cta_button {
+    width: 100%;
+    margin-bottom:15px;
+    height:100%;
+}
+a.cta_button:hover {background: #368fc4!important;}
+
+p.cta-header {
+    color: white !important;
+    font-size: 32px !important;
+    letter-spacing: -2px;
+    font-weight: 300 !important;
+    font-family: Open Sans;
+    line-height: 32px;
+}
+
+p.cta-tagline {
+    color: white !important;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: Open Sans;
+}
+div.cta-btn-wrapper{}
+span.cta-btn {
+    color: #59a5d2;
+    font-size: 16px;
+    padding: 15px;
+    background: white;
+    font-weight: 600 !important;
+    font-family: Open Sans;
+    text-transform:uppercase;
+}
+</style>
+</head>
+
+<body style="font-family: open sans">
+	This is a test site for CTAs
+	<div id="cta-test"></div>
+	<script type="text/javascript">
+		(function(){
+			$.ajax({
+				url : 'http://localhost:3000/api/cta/56d6173f177f3b3e70d4f437',
+			}).done(function(data) {
+				$('#cta-test').html(data.cta.source);
+			});
+		}());
+	</script>
+	
+</body>
+</html>

@@ -10,6 +10,13 @@
             'ui.grid'
         ])
         .config(function ($urlRouterProvider, $stateProvider) {
+
+            // $httpProvider.defaults.useXDomain = true;
+            // $httpProvider.defaults.withCredentials = true;
+            // delete $httpProvider.defaults.headers.common["X-Requested-With"];
+            // $httpProvider.defaults.headers.common["Accept"] = "application/json";
+            // $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+
             $urlRouterProvider.otherwise('/list');
             $stateProvider
                 .state('main', {
@@ -29,11 +36,11 @@
                         }
                     }
                 })
-                .state('main.create', {
-                    url: '/list',
+                .state('main.edit', {
+                    url: '/edit',
                     views: {
                         'list': {
-                            templateUrl: 'partials/createcta.html',
+                            templateUrl: 'partials/editcta.html',
                         }
                     },
                     resolve: {

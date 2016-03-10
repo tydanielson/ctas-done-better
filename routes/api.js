@@ -34,13 +34,40 @@ exports.cta = function (req, res) {
 };
 
 exports.createcta = function (req, res) {
-
+    var tempcta = new Cta(
+        { 
+            name : req.body.name,
+            link : req.body.link,
+            source : req.body.source
+        });
+    tempcta.save(function(err) {
+        if(err) throw err;
+        console.log('Saved new cta');
+    });
 };
 
 exports.updatecta = function (req, res) {
-
+    var oid = mongoose.Types.ObjectId(req.body._id);
+    Cta.findOneAndUpdate(
+        {
+            '_id': oid
+        }, 
+        {
+            name: req.body.name,
+            link : req.body.link,
+            source : req.body.source
+        },
+        function(err) {
+            if (err) throw err;
+        });
 };
 
 exports.deletecta = function (req, res) {
+    var oid = mongoose.Types.ObjectId(req.params.id);
+    Cta.findOneAndRemove({'_id': oid}, function(err) {
+      if (err) throw err;
 
+      // we have deleted the user
+      console.log('Cta deleted!');
+    });
 };
