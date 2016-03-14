@@ -7,7 +7,9 @@
             'ngMaterial',
             'ui.router',
             'ui.tinymce',
-            'ui.grid'
+            'ui.grid',
+            'ui.ace',
+            'ngSanitize'
         ])
         .config(function ($urlRouterProvider, $stateProvider) {
 

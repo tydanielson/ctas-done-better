@@ -19,7 +19,8 @@
 
             $scope.tinymceOptions = {
                 plugins : 'link image table code',
-                theme : 'modern'
+                theme : 'modern',
+                trusted : true
             };
 
             $scope.gridOptions = {
@@ -64,6 +65,7 @@
                 }).then(function (res) {
                     $scope.cta = res.data.cta;
                     $state.go('main.edit');
+                    window.bpf_preview_id = $scope.cta._id
                 });
             }
 
