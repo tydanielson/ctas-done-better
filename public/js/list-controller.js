@@ -17,6 +17,7 @@
 
             $scope.gridOptions = {
                 data: 'ctalist',
+                enableFiltering: true,
                 columnDefs: [
                     {
                         name: 'Name',
@@ -24,16 +25,29 @@
                     },
                     {
                         name: 'Description',
-                        field: 'desc'
+                        field: 'desc',
+                        enableFiltering: false
                     },
                     {
                         name: 'ID',
-                        field: '_id'
+                        field: '_id',
+                        enableFiltering: false
                     },
                     {
                         name: 'Action',
-                        cellTemplate: `<md-button class="md-fab md-mini" ng-click="grid.appScope.editcta(row)"><md-icon>edit</md-icon></md-button>
-                        <md-button class="md-fab md-mini" ng-click="grid.appScope.deletecta(row)"><md-icon>delete</md-icon></md-button>`
+                        cellTemplate:
+                            `
+                            <md-button class="md-fab md-mini" ng-click="grid.appScope.editcta(row)">
+                                <md-icon>edit</md-icon>
+                            </md-button>
+                            <md-button class="md-fab md-mini" ng-click="grid.appScope.deletecta(row)">
+                                <md-icon>delete</md-icon>
+                            </md-button>
+                            <md-button class="md-fab md-mini" ng-click="grid.appScope.clonecta(row)">
+                                <md-icon>content_copy</md-icon>
+                            </md-button>
+                            `,
+                        enableFiltering: false
                     }
                 ],
                 rowHeight : 50
