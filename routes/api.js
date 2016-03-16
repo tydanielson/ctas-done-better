@@ -8,8 +8,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var CtaSchema = new Schema({
     name    : String,
-    link    : String,
-    source  : String
+    desc    : String,
+    source  : String,
+    css     : String
 });
 
 var Cta = mongoose.model('Cta', CtaSchema);
@@ -37,8 +38,9 @@ exports.createcta = function (req, res) {
     var tempcta = new Cta(
         { 
             name : req.body.name,
-            link : req.body.link,
-            source : req.body.source
+            desc : req.body.desc,
+            source : req.body.source,
+            css : req.body.css
         });
     tempcta.save(function(err) {
         if(err) throw err;
@@ -54,8 +56,9 @@ exports.updatecta = function (req, res) {
         }, 
         {
             name: req.body.name,
-            link : req.body.link,
-            source : req.body.source
+            desc : req.body.desc,
+            source : req.body.source,
+            css : req.body.css
         },
         function(err) {
             if (err) throw err;

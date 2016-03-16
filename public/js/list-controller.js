@@ -4,9 +4,7 @@
 
     angular
         .module('app')
-        .controller('MainController', function ($scope, $http, $state) {
-
-            $scope.cta = {};
+        .controller('ListController', function ($scope, $http, $state) {
 
             //will probably want to resolve this data before hand.
             $scope.ctalist = [];
@@ -17,12 +15,6 @@
                 $scope.ctalist = res.data.ctalist;
             });
 
-            $scope.tinymceOptions = {
-                plugins : 'link image table code',
-                theme : 'modern',
-                trusted : true
-            };
-
             $scope.gridOptions = {
                 data: 'ctalist',
                 columnDefs: [
@@ -31,8 +23,8 @@
                         field: 'name'
                     },
                     {
-                        name: 'Link',
-                        field: 'link'
+                        name: 'Description',
+                        field: 'desc'
                     },
                     {
                         name: 'ID',
@@ -47,34 +39,18 @@
                 rowHeight : 50
             };
 
-            $scope.savecta = function () {
-                var method = angular.isUndefined($scope.cta._id) === true ? 'POST':'PUT';
-                $http({
-                    method: method,
-                    url : 'api/cta/save',
-                    data : $scope.cta
-                });
-
-                $state.go('main.list');
-            };
-
             $scope.editcta = function (row) {
-                $http({
-                    method: 'GET',
-                    url : 'api/cta/' + row.entity._id
-                }).then(function (res) {
-                    $scope.cta = res.data.cta;
-                    $state.go('main.edit');
-                    window.bpf_preview_id = $scope.cta._id
-                });
+                $state.go('main.edit', {id : row.entity._id});
             }
 
             $scope.deletecta = function (row) {
+                //delete from the database
                 $http({
                     method: 'DELETE',
                     url : 'api/cta/' + row.entity._id,
                 });
 
+                //delete from ui-grid
                 var index = $scope.ctalist.indexOf(row.entity);
                 $scope.ctalist.splice(index, 1);
             };
@@ -82,10 +58,6 @@
             $scope.creatNewCta = function() {
                 $scope.cta = {};
                 $state.go('main.edit');
-            }
-
-            $scope.back = function() {
-                window.history.back();
             }
 
         });

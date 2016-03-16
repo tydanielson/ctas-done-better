@@ -5,39 +5,40 @@
         <input name="cta-name" ng-model="cta.name" required>
       </md-input-container>
        <md-input-container>
-        <label>Link</label>
-        <input name="cta-link" ng-model="cta.link" required>
+        <label>Description</label>
+        <input name="cta-desc" ng-model="cta.desc">
       </md-input-container>
-      <div layout="row">
+      <div layout="row" style="height:300px;">
         <div layout-padding flex="50">
             <textarea ui-tinymce="tinymceOptions" ng-model="cta.source"></textarea>
         </div>
-
         <div layout-padding flex="50">
-            <div ng-model="localstyle" ui-ace={mode:'css'}></div>
+            <div ng-model="cta.css" ui-ace={mode:'css'}></div>
         </div>
       </div>
       <div layout-padding>
         <style type="text/css">
-            {{localstyle}}
+            {{cta.css}}
         </style>
         <div ng-bind-html="cta.source"></div>
       </div>
 
       <br/>
-      <md-button class="md-raised" ng-click="savecta()">Save</md-button>
+      <md-button class="md-raised md-primary" ng-click="savecta()">Save</md-button>
       <md-button class="md-raised" ng-click="back()">Back</md-button>
     </form>
 </div>
 
 
-<!--            <div id="cta-preview"></div>
-            <script type="text/javascript">
-                (function(){
-                    $.ajax({
-                        url : '/api/cta/' + window.bpf_preview_id,
-                    }).done(function(data) {
-                        $('#cta-preview').html(data.cta.source);
-                    });
-                }());
-            </script> -->
+<!--
+<div id="cta-preview"></div>
+<script type="text/javascript">
+    (function(){
+        $.ajax({
+            url : '/api/cta/' + window.bpf_preview_id,
+        }).done(function(data) {
+            $('#cta-preview').html(data.cta.source);
+        });
+    }());
+</script> 
+-->

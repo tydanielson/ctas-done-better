@@ -13,12 +13,6 @@
         ])
         .config(function ($urlRouterProvider, $stateProvider) {
 
-            // $httpProvider.defaults.useXDomain = true;
-            // $httpProvider.defaults.withCredentials = true;
-            // delete $httpProvider.defaults.headers.common["X-Requested-With"];
-            // $httpProvider.defaults.headers.common["Accept"] = "application/json";
-            // $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
-
             $urlRouterProvider.otherwise('/list');
             $stateProvider
                 .state('main', {
@@ -35,19 +29,26 @@
                     views: {
                         'list': {
                             templateUrl: 'partials/listcta.html',
+                            controller: 'ListController'
                         }
                     }
                 })
                 .state('main.edit', {
-                    url: '/edit',
+                    url: '/edit/:id',
                     views: {
                         'list': {
                             templateUrl: 'partials/editcta.html',
+                            controller: 'EditController'
                         }
                     },
                     resolve: {
-                        ctaData: function ($http) {
-                            return $http({method: 'GET', url: ''});
+                        cta: function ($http, $stateParams) {
+                            return $http({
+                                method: 'GET',
+                                url : 'api/cta/' + $stateParams.id
+                            }).then(function (res) {
+                                return res.data.cta;
+                            });
                         }
                     }
                 });
